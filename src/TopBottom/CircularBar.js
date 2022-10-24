@@ -1,8 +1,8 @@
 import { useContext, useEffect } from "react"
 import { CircularProgressbar,buildStyles } from "react-circular-progressbar"
 import MyContext from "../contexts/myContext"
-export default function CircularBar({progress}) {
-    const {setProgress,datas} = useContext(MyContext)
+export default function CircularBar() {
+    const {setProgress,datas,progress} = useContext(MyContext)
     console.log('SUAS DATAS',datas)
     return(
         <CircularProgressbar

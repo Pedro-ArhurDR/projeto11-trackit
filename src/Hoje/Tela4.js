@@ -30,13 +30,15 @@ export default function Tela4() {
         const promise = axios.get(`https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/today`,config)
     
         promise.then(resposta => 
-          console.log(resposta.data)& setDatas(resposta.data)
+          console.log(resposta.data)& setDatas(resposta.data)&
+          resposta.data.map((e)=>e.done===true?
+          setProgress(resposta.data.filter(e => e.done === true).length/resposta.data.length*100):null)
         )
         promise.catch(erro => {
             console.log('ERRO')
         })
 
-      },[render])
+      },[progress])
 
 
 
@@ -47,7 +49,8 @@ export default function Tela4() {
         <Layout>
         <div>
             <h1>{today}</h1> 
-            {progress===0?<h3>Nenhum hábito concluído ainda</h3>:<h3>{ Math.round(progress)}% dos hábitos concluídos</h3>}
+            {progress===0?<h3>Nenhum hábito concluído ainda</h3>:
+            <h3>{ Math.round(progress)}% dos hábitos concluídos</h3>}
         </div>
         {datas.length===0?null:
             datas.map((e,i)=> <Habito cor={cor} key={i}>

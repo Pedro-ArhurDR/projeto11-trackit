@@ -10,7 +10,6 @@ export default function Tela2(){
     const {setSenha,setEmail,setFoto,setNome,senha,email,nome,foto} = useContext(MyContext)
     const navigate = useNavigate()
     const [isLoading, setIsLoading] = useState(false);
-    console.log()
 
     const cadastro = {
         email:email,
@@ -18,7 +17,6 @@ export default function Tela2(){
         image: foto,
         password:senha 
     }
-    console.log(cadastro)
 
     function cadastrar(event){
         event.preventDefault()
@@ -28,7 +26,6 @@ export default function Tela2(){
        promise.then(()=>navigate('/')& setIsLoading(false))
        promise.catch(err =>alert(err.response.data.message) & setIsLoading(false) )
 
-        console.log('CADASTRO FINAL',cadastro)
     }
     return (
         <Screen1>

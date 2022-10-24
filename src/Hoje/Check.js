@@ -23,11 +23,6 @@ export default function Chek({marcarTarefa,i,e,setRender}) {
 
     },[])
     function marcarTarefa(indice){
-        
-        setCor('#8FC549')
-        setRender([+1])
-        setSequencia(sequencia+1)
-        setProgress(progress+100/tamanho)
         if(cor==='#8FC549'){
             const config = {
                 headers: {
@@ -50,7 +45,7 @@ export default function Chek({marcarTarefa,i,e,setRender}) {
             }
             const promise = axios.post(`https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/${e.id}/check`,e.id,config)
             promise.then(resposta => 
-                resposta
+                setCor('#8FC549')&setRender([+1])&setSequencia(sequencia+1)&setProgress(progress+100/tamanho)
             )
             promise.catch(erro => {
                 console.log('ERRO',erro.response.data.message)

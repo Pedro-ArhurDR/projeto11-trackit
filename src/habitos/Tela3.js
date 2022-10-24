@@ -28,6 +28,7 @@ export default function Tela3() {
     console.log(nomeH)
     console.log(diasE)
     useEffect(()=>{
+        console.log('SEU TOKEN',dados.token)
         const config = {
             headers: {
                 Authorization: `Bearer ${dados.token}`
@@ -36,12 +37,15 @@ export default function Tela3() {
         const promise = axios.get(`https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/today`,config)
     
         promise.then(resposta => 
-          setDatas(resposta.data)
+          console.log(resposta.data)& setDatas(resposta.data)&
+          resposta.data.map((e)=>e.done===true?
+          setProgress(resposta.data.filter(e => e.done === true).length/resposta.data.length*100):null)
         )
         promise.catch(erro => {
-            console.log(erro.response.data.message)
+            console.log('ERRO')
         })
-    },[])
+
+      },[render])
     useEffect(()=>{
         console.log('SEU TOKEN',dados.token)
         const config = {
@@ -52,7 +56,7 @@ export default function Tela3() {
         const promise = axios.get(`https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits`,config)
     
         promise.then(resposta => 
-             setListarH(resposta.data)
+             setListarH(resposta.data) & setDados(dados)
         )
     
         promise.catch(erro => {

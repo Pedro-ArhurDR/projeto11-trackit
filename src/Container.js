@@ -10,14 +10,13 @@ import Tela4 from "./Hoje/Tela4";
 import axios from "axios";
 export default function Container() {
     const[nome,setNome] = useState('')
-    const[senha,setSenha] = useState('123456')
-    const[email, setEmail] = useState('joe@respondeai.com.br')
+    const[senha,setSenha] = useState('')
+    const[email, setEmail] = useState('')
     const[foto, setFoto] = useState('')
     const[dados,setDados] = useState({})
     const[token,setToken]= useState('')
     const [datas,setDatas] = useState([])
     const [progress,setProgress] = useState(0)
-    console.log('PROG',progress)
     useEffect(()=>{
         const config = {
             headers: {

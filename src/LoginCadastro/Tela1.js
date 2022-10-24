@@ -14,10 +14,8 @@ export default function Tela1({}){
         email:email,
         password:senha
     }
-    console.log(logar)
     function login(event){
         event.preventDefault()
-        console.log('LOGAR FINAL',logar)
         setIsLoading(true)
         const promise = axios.post('https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/login',logar)
         promise.then(res => setDados(res.data) & navigate('/habitos') & setIsLoading(false)
