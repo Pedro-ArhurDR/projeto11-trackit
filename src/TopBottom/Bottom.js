@@ -11,12 +11,12 @@ export default function Bottom() {
     const navigate = useNavigate()
     return(
     <Bot>
-        <div onClick={()=>navigate('/habitos')}>Hábitos</div>
+        <div data-identifier="habit-page-action" onClick={()=>navigate('/habitos')}>Hábitos</div>
         <Link to={'/hoje'}>
         <CircularBar progress={progress}/>
         </Link>
         
-      <div onClick={()=>navigate('/historico')}>Historico</div>
+      <div data-identifier="historic-page-action" onClick={()=>navigate('/historico')}>Historico</div>
     </Bot>)
 }
 

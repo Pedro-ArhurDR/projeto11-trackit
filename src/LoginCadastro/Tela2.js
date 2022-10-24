@@ -32,10 +32,10 @@ export default function Tela2(){
 
         <img src={logo}/>
         <form onSubmit={cadastrar}>
-        <input placeholder="email" type="email" onChange={e => setEmail(e.target.value)} required/>
-        <input placeholder="senha" type="password" onChange={e => setSenha(e.target.value)}required/>
-        <input placeholder="nome" type="text" onChange={e => setNome(e.target.value)}required/>
-        <input placeholder="foto" type="text" onChange={e => setFoto(e.target.value)}required/>
+        <input data-identifier="input-email" placeholder="email" type="email" onChange={e => setEmail(e.target.value)} required/>
+        <input data-identifier="input-password" placeholder="senha" type="password" onChange={e => setSenha(e.target.value)}required/>
+        <input  data-identifier="input-name" placeholder="nome" type="text" onChange={e => setNome(e.target.value)}required/>
+        <input data-identifier="input-photo" placeholder="foto" type="url" onChange={e => setFoto(e.target.value)}required/>
         <button type="submit" disabled={isLoading}>
         {isLoading===false?'Cadastrar':<DotWrapper>
                         <Dot delay="0s" />
@@ -44,7 +44,7 @@ export default function Tela2(){
              </DotWrapper>}
         </button>
         </form>
-        <Link to='/'><p>Já tem uma conta? Faça login!</p></Link>
+        <Link data-identifier="back-to-login-action" to='/'><p>Já tem uma conta? Faça login!</p></Link>
         </Screen1>
     )
 }

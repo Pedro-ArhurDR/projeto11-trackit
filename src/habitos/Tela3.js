@@ -115,21 +115,21 @@ export default function Tela3() {
         <Layout>
         <div>
             <h1>Meus Habitos</h1> 
-            <div><img onClick={criarHabito} src={mais}/></div>
+            <div data-identifier="create-habit-btn"><img onClick={criarHabito} src={mais}/></div>
         </div>
         {isBool===false?null:
         <Habito>
             <form onSubmit={salvarHabito}>
-            <input disabled={isLoading} placeholder="nome do hábito" type="text" value={nomeH} onChange={e => setNomeH(e.target.value)}required />
-            <h3 >{dias.map((e,i)=><Dias diasE={diasE} setDiasE={setDiasE} i={i} e={e} key={i}/>)}</h3>
-            <span onClick={()=>setisBool(false)}>Cancelar</span><button disabled={isLoading} type='submit'>Salvar</button>
+            <input data-identifier="input-habit-name" disabled={isLoading} placeholder="nome do hábito" type="text" value={nomeH} onChange={e => setNomeH(e.target.value)}required />
+            <h3 data-identifier="week-day-btn" >{dias.map((e,i)=><Dias diasE={diasE} setDiasE={setDiasE} i={i} e={e} key={i}/>)}</h3>
+            <span data-identifier="cancel-habit-create-btn" onClick={()=>setisBool(false)}>Cancelar</span><button data-identifier="save-habit-create-btn" disabled={isLoading} type='submit'>Salvar</button>
             </form>
         </Habito>
     }
-            {listarH.length===0?<h2>Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para começar a trackear!</h2>:
+            {listarH.length===0?<h2 data-identifier="no-habit-message">Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para começar a trackear!</h2>:
             listarH.map((a,i)=><HabitosAPI key={i}>
-            <h2>{a.name}</h2>
-            <span><img onClick={()=>window.confirm('Deseja mesmo deletar?')===true?deletarHabito(a,i):null} src={lixo}/></span>
+            <h2 data-identifier="habit-name">{a.name}</h2>
+            <span><img data-identifier="delete-habit-btn" onClick={()=>window.confirm('Deseja mesmo deletar?')===true?deletarHabito(a,i):null} src={lixo}/></span>
             <h3>{dias.map((e,i)=><Dia key={i} colorT={a.days.includes(i)?'white':'#CFCFCF'} color={a.days.includes(i)?'#CFCFCF':'white'}>{e}</Dia>)}</h3>
             </HabitosAPI>)
             }

@@ -44,7 +44,7 @@ export default function Tela4() {
 
 
     return(
-        <Hoje>
+        <Hoje data-identifier="today-infos">
         <Top/>
         <Layout>
         <div>

@@ -32,15 +32,15 @@ export default function Tela1({}){
         
         <img src={logo}/>
         <form onSubmit={login}>
-        <input placeholder="email" type="email" value={email}  onChange={e => setEmail(e.target.value)} required/>
-        <input placeholder="senha" type="password" value={senha} onChange={e => setSenha(e.target.value)} required/>
-        <button type="submit" disabled={isLoading}>{isLoading===false?'Entrar':            <DotWrapper>
+        <input data-identifier="input-email" placeholder="email" type="email" value={email}  onChange={e => setEmail(e.target.value)} required/>
+        <input data-identifier="input-password" placeholder="senha" type="password" value={senha} onChange={e => setSenha(e.target.value)} required/>
+        <button data-identifier="login-btn" type="submit" disabled={isLoading}>{isLoading===false?'Entrar':            <DotWrapper>
                         <Dot delay="0s" />
                         <Dot delay=".1s" />
                         <Dot delay=".2s" />
              </DotWrapper>}</button>
         </form>
-        <Link to="/cadastro"><p>Não tem uma conta?{} Cadastre-se!</p></Link>
+        <Link data-identifier="sign-up-action" to="/cadastro"><p>Não tem uma conta?{} Cadastre-se!</p></Link>
         </Screen1>
     )
 }

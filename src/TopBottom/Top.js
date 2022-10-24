@@ -7,7 +7,7 @@ export default function Top() {
     console.log('SUA IMAGEM',dados.image)
     return(
     <Topo>
-        <img src={track}/> <div></div> <div><img src={dados.image}/></div>
+        <img src={track}/> <div></div> <div><img data-identifier="avatar" src={dados.image}/></div>
     </Topo>
     )
 }

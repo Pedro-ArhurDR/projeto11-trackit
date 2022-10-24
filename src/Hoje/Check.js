@@ -54,7 +54,7 @@ export default function Chek({marcarTarefa,i,e,setRender}) {
       }
     return(
     <>
-    <Vector cor={cor}onClick={()=>marcarTarefa(i)}><img src={vetor}/></Vector>
+    <Vector data-identifier="done-habit-btn" cor={cor}onClick={()=>marcarTarefa(i)}><img src={vetor}/></Vector>
                 <h3>sequencia atual: <Texto colorT={colorT}> {sequencia} </Texto> dias</h3>
             <h3>seu recorde:<Texto colorT2={colorT2}>{recorde} </Texto> dias</h3>
     </>
