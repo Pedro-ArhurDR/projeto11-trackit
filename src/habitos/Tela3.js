@@ -78,7 +78,7 @@ export default function Tela3() {
         const promise = axios.post('https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits',habitoF,config)
 
         promise.then(resposta => 
-            console.log(resposta) & setRender([+1]) & setisBool(false) & setIsLoading(false) & setNomeH('')&setDiasE([]) &setDad
+            console.log(resposta) & setRender([+1]) & setisBool(false) & setIsLoading(false) & setNomeH('')&setDiasE([]) &setDados(dados)
         )
         promise.catch(erro => 
             alert(erro.response.data.message)&setIsLoading(false)
@@ -199,12 +199,12 @@ display:flex;
 flex-direction:column;
 margin-bottom:110px;
 h1{
-    font-weight:bold;
+    font-weight:400;
     margin-top:20px;
 }
 h2{
     margin-top:30px;
-    font-weight:bold;
+    font-weight:400;
     color:#666666;
 }
 
@@ -244,10 +244,16 @@ position:relative;
         font-size:16px;
 } 
     h2{
+        position:absolute;
+        left:10px;
+        bottom:50px;
         color:#666666;
         font-size: 20px;
     }
     h3{
+        position:absolute;
+        left:10px;
+        bottom:10px;
         width:250px;
         display:flex;
         justify-content:space-evenly;

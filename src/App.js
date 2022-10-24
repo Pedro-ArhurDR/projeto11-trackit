@@ -12,5 +12,6 @@ export default function App() {
 const GlobalStyle = styled.div`
     height:100vmax;
     width:100%;
-    
+    font-family: 'Lexend Deca';
+font-style: normal;
 `

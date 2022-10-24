@@ -6,10 +6,20 @@ import MyContext from "../contexts/myContext"
 import vetor from '../img/Vector.png'
 import axios from "axios"
 import Chek from "./Check"
+import dayjs from "dayjs"
+var customParseFormat = require('dayjs/plugin/customParseFormat')
+dayjs.extend(customParseFormat)
 export default function Tela4() {
     const{dados,datas,setDatas,progress,setProgress} = useContext(MyContext)
     const [render,setRender] = useState(0)
     const [cor,setCor] = useState('')
+    const [dia,setDia]=useState({
+        date:dayjs().date(),
+        month:dayjs().month(),
+        day:dayjs().day()
+    })
+    require('dayjs/locale/pt-br')
+    let today = dayjs().locale('pt-br').format('dddd, DD/MM')
     useEffect(()=>{
         console.log('SEU TOKEN',dados.token)
         const config = {
@@ -36,7 +46,7 @@ export default function Tela4() {
         <Top/>
         <Layout>
         <div>
-            <h1>DIA</h1> 
+            <h1>{today}</h1> 
             {progress===0?<h3>Nenhum hábito concluído ainda</h3>:<h3>{ Math.round(progress)}% dos hábitos concluídos</h3>}
         </div>
         {datas.length===0?null:
@@ -77,6 +87,10 @@ div{
     h3{
         color:#BABABA;
         display:flex;
+    }
+    h1{
+        font-weight:400;
+    margin-top:20px;
     }
     }
 `
