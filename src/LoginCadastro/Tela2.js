@@ -1,12 +1,15 @@
-import styled from "styled-components"
+import styled,{keyframes} from "styled-components"
 import logo from "../img/Logo.png"
 import MyContext from "../contexts/myContext"
 import { useContext } from "react"
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
+import { useState } from "react"
+import { Link } from "react-router-dom"
 export default function Tela2(){
     const {setSenha,setEmail,setFoto,setNome,senha,email,nome,foto} = useContext(MyContext)
     const navigate = useNavigate()
+    const [isLoading, setIsLoading] = useState(false);
     console.log()
 
     const cadastro = {
@@ -19,10 +22,11 @@ export default function Tela2(){
 
     function cadastrar(event){
         event.preventDefault()
+        setIsLoading(true)
        const promise = axios.post('https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/sign-up',cadastro)
 
-       promise.then(()=>navigate('/'))
-       promise.catch(err =>alert(err.response.data.message) )
+       promise.then(()=>navigate('/')& setIsLoading(false))
+       promise.catch(err =>alert(err.response.data.message) & setIsLoading(false) )
 
         console.log('CADASTRO FINAL',cadastro)
     }
@@ -35,9 +39,15 @@ export default function Tela2(){
         <input placeholder="senha" type="password" onChange={e => setSenha(e.target.value)}required/>
         <input placeholder="nome" type="text" onChange={e => setNome(e.target.value)}required/>
         <input placeholder="foto" type="text" onChange={e => setFoto(e.target.value)}required/>
-        <button type="submit">Cadastrar</button>
+        <button type="submit" disabled={isLoading}>
+        {isLoading===false?'Cadastrar':<DotWrapper>
+                        <Dot delay="0s" />
+                        <Dot delay=".1s" />
+                        <Dot delay=".2s" />
+             </DotWrapper>}
+        </button>
         </form>
-        <p>Já tem uma conta? Faça login!</p>
+        <Link to='/'><p>Já tem uma conta? Faça login!</p></Link>
         </Screen1>
     )
 }
@@ -82,4 +92,27 @@ const Screen1 = styled.div`
         font-weight:bold;
         text-decoration-line: underline;
     }
+`
+const BounceAnimation = keyframes`
+  0% { margin-bottom: 0; }
+  50% { margin-bottom: 15px }
+  100% { margin-bottom: 0 }
+;
+`
+const DotWrapper = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+;
+`
+const Dot = styled.div`
+  background-color: #FFFFFF;
+  border-radius: 50%;
+  width: 10px;
+  height: 10px;
+  margin: 0 5px;
+  /* Animation */
+  animation: ${BounceAnimation} 0.5s linear infinite;
+  animation-delay: ${props => props.delay};
+;
 `

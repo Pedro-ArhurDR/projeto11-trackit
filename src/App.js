@@ -1,5 +1,6 @@
 import Container from "./Container"
 import styled from "styled-components"
+
 export default function App() {
     return (
         <GlobalStyle>
@@ -11,4 +12,5 @@ export default function App() {
 const GlobalStyle = styled.div`
     height:100vmax;
     width:100%;
+    
 `
